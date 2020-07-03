@@ -4,4 +4,4 @@
 import timer
 import TwitchController
 timer.stopwatch()
-TwitchChat1.program()
+TwitchController.program()
