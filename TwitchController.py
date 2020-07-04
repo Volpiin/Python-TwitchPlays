@@ -9,8 +9,9 @@ import pynput
 import pyautogui
 import keyboard
 
-message = ''
-user = ''
+
+message = ' '
+user = ' '
 
 def program():
     SERVER = "irc.twitch.tv"
@@ -36,20 +37,31 @@ def program():
                 "NICK " + BOT + "\n" +
                 "JOIN #" + CHANNEL + "\n").encode())
 
+    #Example of Twitch Bot Commands Setup
+    def commands():
+        global message
+        global user
+        while True:
+            if message.lower() == '!taco':
+                sendMessage(irc, "It's Taco Time!")
+                message = ''
+                return
+            else:
+                message = ''
+                return
+
     def gamecontrol():
         global message
+        global user
         while True:
-
-            #Example Commands 
-
+            #Minecraft
             if message.lower() == 'forward' or message.lower() == 'w':
                 keyboard.press('w')
                 time.sleep(5)
                 message = ''
                 keyboard.release('w')
-                
                 return
-            if 'back' in message.lower() or message.lower() == 's':
+            if message.lower() == 'back' or message.lower() == 's':
                 keyboard.press('s')
                 time.sleep(2)
                 message = ''
@@ -91,12 +103,13 @@ def program():
                 pyautogui.moveRel(60, 0, duration = 1) 
                 message = ''
                 return
+            
             else:
                 message == ''
                 return
             continue
     
-    #Connects You to Twitch Servers
+    #Connects You to Twitch Servers and starts other groups (i.e Controller and Commands)
     def twitch():
 
         global user
@@ -107,20 +120,20 @@ def program():
             while Loading:
                 readbuffer_join = irc.recv(1024)
                 readbuffer_join = readbuffer_join.decode()
-                print(readbuffer_join)
+                
                 for line in readbuffer_join.split("\n")[0:-1]:
-                    print(line)
+                    
                     Loading = loadingComplete(line)
 
         def loadingComplete(line):
             if("End of /NAMES list" in line):
-                print("TwitchBot has joined " + CHANNEL + "'s Channel!")
-                sendMessage(irc, "Hello World!")
+                print("Bot Succesfuly Connected")
+                #sendMessage(irc, "Hello World!")
 
                 return False
             else:
                 return True
-
+        global sendMessage
         def sendMessage(irc, message):
             messageTemp = "PRIVMSG #" + CHANNEL + " :" + message
             irc.send((messageTemp + "\n").encode())
@@ -172,6 +185,7 @@ def program():
                     message = getMessage(line)
                     print(user + " : " + message)
                     gamecontrol()
+                    commands()
                     
 
 
@@ -179,3 +193,5 @@ def program():
     t1.start()
     t2 = threading.Thread(target = gamecontrol)
     t2. start()
+    t3 = threading.Thread(target = commands)
+    t3.start()
