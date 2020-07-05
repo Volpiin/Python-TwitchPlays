@@ -37,11 +37,19 @@ def program():
                 "NICK " + BOT + "\n" +
                 "JOIN #" + CHANNEL + "\n").encode())
 
+
+
     #Example of Twitch Bot Commands Setup
     def commands():
         global message
         global user
+        user_list = []
         while True:
+            
+
+            if user.lower() == '(name)' and message.lower() == 'stop':
+                quit()
+
             if message.lower() == '!taco':
                 sendMessage(irc, "It's Taco Time!")
                 message = ''
@@ -53,6 +61,8 @@ def program():
     def gamecontrol():
         global message
         global user
+        i = 0
+
         while True:
             #Minecraft
             if message.lower() == 'forward' or message.lower() == 'w':
@@ -127,7 +137,6 @@ def program():
 
         def loadingComplete(line):
             if("End of /NAMES list" in line):
-                print("Bot Succesfuly Connected")
                 #sendMessage(irc, "Hello World!")
 
                 return False
@@ -160,10 +169,6 @@ def program():
                 return False
             else:
                 return True
-
-        joinchat()
-        
-        
         while True:
             try:
                 readbuffer = irc.recv(1024).decode()
@@ -173,7 +178,7 @@ def program():
                 if line == "":
                     continue
                 if "PING :tmi.twitch.tv" in line:
-                    print(line)
+                    
                     msgg = "PONG :tmi.twitch.tv\r\n".encode()
                     irc.send(msgg)
                     continue
@@ -187,6 +192,13 @@ def program():
                     gamecontrol()
                     commands()
                     
+        
+        joinchat()
+        
+        
+        
+                    
+                    
 
 
     t1 = threading.Thread(target = twitch)
@@ -195,3 +207,4 @@ def program():
     t2. start()
     t3 = threading.Thread(target = commands)
     t3.start()
+
