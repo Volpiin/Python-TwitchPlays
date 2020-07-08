@@ -12,3 +12,7 @@ Everything else should work.
 Fixed Errors:
 - Only Somtimes Would Connect to Chat
   - Now has 100% success Rate
+
+
+
+If You Appreciate This Consider Following me on Twitch: https://www.twitch.tv/henryfundenberger
