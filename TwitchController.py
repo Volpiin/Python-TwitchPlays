@@ -169,6 +169,7 @@ def program():
                 keyboard.release('w')
                 keyboard.release('control')
                 return
+            #You may need to experiment with turning angels and time. This turns you about 90° to the right in MC
             if message.lower() == 'turn right':
                 pyautogui.moveRel(60, 0, duration = 1) 
                 message = ''
