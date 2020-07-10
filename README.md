@@ -26,6 +26,7 @@ Changelogs: Check Here for Updates
 - 7/10/2020
 - Added an incomplete special Chars Library for typing command that allows users to type characters such as !,?,# etc...
   - Add to the library by adding ,"key" to the end of the speical_chars list
+  - ToDo: Move Commands to Seperate python file and call them from main file to make future updates easier.
 
 
 
