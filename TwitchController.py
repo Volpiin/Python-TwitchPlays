@@ -67,9 +67,9 @@ def program():
                         final.append(word)
                     final_place = final.index('type')
                     for word in final[final_place+1:]:
-                        if "'" in word:
+                        if "’" in word:
                             for letter in word:
-                                if letter == "'":
+                                if letter == "’":
                                     continue
                                 else:
                                     apas_builder.append(letter)
