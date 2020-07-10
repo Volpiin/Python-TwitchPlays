@@ -1,4 +1,4 @@
-# TwitchController-v1.2.3 aka Twitch Plays Bot
+# TwitchController-v1.2.4 aka Twitch Plays Bot
 Used to allow your computer to receive your twitch chat, to control your keyboard or to create your own twitch bot!
 
 
