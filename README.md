@@ -15,7 +15,7 @@ Fixed Errors:
 
 If You Have Already Downloaded this Porject. I recogmend just Taking the New Parts of Updates That You Like
 
-Changelogs:
+Changelogs: Check Here for Updates
 7/9/2020
   - Added a "type" command that allows twitch chat users to type a maximum of 8 words (this can be changed in the type section, in the group Commands)
   - Added a "Click" command that allows twitch chat users to click the left mouse button (You can change this in Click section, in the group Game Control)
