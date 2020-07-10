@@ -29,6 +29,7 @@ Changelogs: Check Here for Updates
   - Add to the library by adding ,"key" to the end of the speical_chars list.
   - ToDo: Move Commands to Seperate python file and call them from main file to make future updates easier.
   - Added comments to differnt aspects to add clarification.
+  - Add limits to type command that can be changed. i.e) Max Number of Words Allowed and Max Number of Letters Allowed in a Word
 
 
 - If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
