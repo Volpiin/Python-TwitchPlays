@@ -8,6 +8,7 @@ import time
 import pynput
 import pyautogui
 import keyboard
+import mouse
 
 
 message = ' '
@@ -46,9 +47,43 @@ def program():
         user_list = []
         while True:
             
+            #Types a Message Using Keyboard based on twitch input
+            # This is ugly code and in the process of getting improved.
+           ''' if 'type' in message.lower():
+                new_msg = message.split('type')
+                new_msg = message.split(' ')
+                constructor = []
+                final = []
+                string = []
+                for scentence in new_msg:
+                    constructor.append(scentence)
+                    #Limits The max Number of Words That Can be Typed
+                if len(constructor) >= 10:
+                    pass
+                    return
+                else:
+                    for word in constructor:
+                        final.append(word)
+                    final_place = final.index('type')
+                    for word in final[final_place+1:]:
+                        string.append(word)
+                    for word in string:
+                        for char in word:
+                            keyboard.press(char)
+                            keyboard.release(char)
+                        keyboard.press('space')
+                return'''
 
-            if user.lower() == '(name)' and message.lower() == 'stop':
-                quit()
+
+                    
+                '''if word == '':
+                        pass
+                    else:
+                        for letter in word.strip():
+                            keyboard.press(letter)
+                            keyboard.release(letter)
+                        keyboard.press('space')'''
+
 
             if message.lower() == '!taco':
                 sendMessage(irc, "It's Taco Time!")
@@ -65,6 +100,13 @@ def program():
 
         while True:
             #Minecraft
+            if message.lower() == 'left click':
+                mouse.press(button='left')
+                time.sleep(1)
+                mouse.release(button = 'left')
+                message = ''
+                return
+                
             if message.lower() == 'forward' or message.lower() == 'w':
                 keyboard.press('w')
                 time.sleep(5)
