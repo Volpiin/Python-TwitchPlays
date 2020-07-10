@@ -54,9 +54,13 @@ def program():
             if 'type' in message.lower():
                 new_msg = message.split('type')
                 new_msg = message.split(' ')
+                #Used to check number of words in message string
                 constructor = []
+                #Used to create finalized constructor list
                 final = []
+                #used to create final string
                 string = []
+                #Checks for bad windows Characters
                 apas_builder = []
                 for scentence in new_msg:
                     
@@ -173,6 +177,7 @@ def program():
             continue
     
     #Connects You to Twitch Servers and starts other groups (i.e Controller and Commands)
+    #You Should Not Need to Change Anything in the Twitch Section
     def twitch():
 
         global user
