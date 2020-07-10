@@ -8,7 +8,12 @@ Download Sockets.py library
 Download recommended libaries 
 
 Everything else should work. 
-
+ ‍ 
+  ‍ 
+   ‍ 
+    ‍ 
+     ‍ 
+      ‍ 
 Fixed Errors:
 - Only Somtimes Would Connect to Chat
   - Now has 100% success Rate
