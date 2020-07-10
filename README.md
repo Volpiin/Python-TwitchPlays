@@ -19,6 +19,8 @@ If You Have Already Downloaded this Porject. I recogmend just Taking the New Par
 
 
 
+
+
 Changelogs:
 7/9/2020
   - Added a "type" command that allows twitch chat users to type a maximum of 8 words (this can be changed in the type section, in the group Commands)
