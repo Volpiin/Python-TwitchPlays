@@ -87,6 +87,7 @@ def program():
                             apas_builder = []
                         string.append(word)
                     for word in string:
+                        #If a character such as ! is in message, checks and makes sure the correct button is caitalized 
                         for char in word:
                             if char in special_char:
                                 keyboard.press('shift')
