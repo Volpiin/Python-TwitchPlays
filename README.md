@@ -31,5 +31,5 @@ Changelogs: Check Here for Updates
   - Added comments to differnt aspects to add clarification.
 
 
-If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
-If You Appreciate This Consider Following me on Twitch: https://www.twitch.tv/henryfundenberger
+- If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
+- If You Appreciate This Consider Following me on Twitch: https://www.twitch.tv/henryfundenberger
