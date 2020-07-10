@@ -12,8 +12,8 @@ Everything else should work.
 
 If You Have Already Downloaded this Porject. I recogmend just Taking the New Parts of Updates That You Like
 
-Known Errors:
-N/A
+Known Errors: Did You Find an Error? Report it Here -> https://forms.gle/B5hKGd3sT6qGgrrB9
+
 Check Changelogs for resolved errors.
 
 Changelogs: Check Here for Updates
