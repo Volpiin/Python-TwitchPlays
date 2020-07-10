@@ -9,11 +9,12 @@ Download recommended libaries
 
 Everything else should work. 
 
-Fixed Errors:
-- Only Somtimes Would Connect to Chat
-  - Now has 100% success Rate
 
 If You Have Already Downloaded this Porject. I recogmend just Taking the New Parts of Updates That You Like
+
+Known Errors:
+
+Check Changelogs for resolved errors.
 
 Changelogs: Check Here for Updates
 - 7/9/2020
