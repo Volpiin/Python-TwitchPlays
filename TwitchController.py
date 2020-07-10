@@ -4,6 +4,7 @@ import userinfo
 import os
 import time
 
+import random
 #Recogmended Libraries
 import pynput
 import pyautogui
@@ -11,7 +12,7 @@ import keyboard
 import mouse
 
 global special_char
-special_char = ['!','@',"#","$","%","^","&","*","(",")","?"]
+special_char = ['!','@',"#","$","%","^","&","*","(",")","?","P"]
 
 message = ' '
 user = ' '
@@ -49,43 +50,76 @@ def program():
         user_list = []
         while True:
             
-            #Types a Message Using Keyboard based on twitch input
-                #Currently types everything but working on getting it to only type words after the word type!
-            if 'type' in message.lower():
-                new_msg = message.split('type')
-                new_msg = message.split(' ')
-                #Used to check number of words in message string
-                constructor = []
-                #Used to create finalized constructor list
-                final = []
-                #used to create final string
-                string = []
-                #Checks for bad windows Characters
-                apas_builder = []
-                for scentence in new_msg:
-                    
-                    constructor.append(scentence)
-
-                if len(constructor) >= 20:
+            if message.lower() == '!taco':
+                sendMessage(irc, "It's Taco Time!")
+                message = ''
+                return
+            
+            #used if typying somthign like a story otherwise just delete it.    
+            if message.lower() == 'new paragraph':
+                attempt = random.randint(1,2)
+                print(attempt)
+                if attempt == 2:
+                    keyboard.press('enter')
+                    keyboard.release('enter')
+                    keyboard.press('enter')
+                    keyboard.release('enter')
+                    keyboard.press('tab')
+                    keyboard.release('tab')
+                    message=''
                     return
                 else:
+                    message=''
+                    return
+            #Types a Message Using Keyboard based on twitch input
+                #Currently types everything but working on getting it to only type words after the word type!
+            
+            try:
+                if 'type' in message.lower():
+                    new_msg = message.split('type')
+                    new_msg = message.split(' ')
+                    #Used to check number of words in message string
+                    constructor = []
+                    #Used to create finalized constructor list
+                    final = []
+                    #used to create final string
+                    string = []
+                    #Checks for bad windows Characters
+                    apas_builder = []
+                    for scentence in new_msg:
+                        
+                        constructor.append(scentence)
+                    #Limits Max number of words allowed to be typed, It is num - 2.
+                    # Ex.) If >=7 then 5 words can be typed.
+                    if len(constructor) >= 7:
+                        message=''
+                        return
+                    else:
+                        for word in constructor:
+                            final.append(word)
+                        final_place = final.index('type')
+                        for word in final[final_place+1:]:
+                            #This is an apple character that can't be used on windows machines. 
+                            #If you want to get rid of another puncuation or find a punctuation that causes an error, add it here with a or statement
+                            # ex(if "’" in word or if "symbol" in word:)
+                        
+
+                            if "’" in word:
+                                for letter in word:
+                                    if letter == "’":
+                                        continue
+                                    else:
+                                        apas_builder.append(letter)
+                                word = ''.join(apas_builder)
+                                apas_builder = []
+                            string.append(word)
                     for word in constructor:
-                        final.append(word)
-                    final_place = final.index('type')
-                    for word in final[final_place+1:]:
-                        #This is an apple character that can't be used on windows machines. 
-                        #If you want to get rid of another puncuation or find a punctuation that causes an error, add it here with a or statement
-                        # ex(if "’" in word or if "symbol" in word:)
-         
-                        if "’" in word:
-                            for letter in word:
-                                if letter == "’":
-                                    continue
-                                else:
-                                    apas_builder.append(letter)
-                            word = ''.join(apas_builder)
-                            apas_builder = []
-                        string.append(word)
+                        #Checks if word is longer than 15 characters if it is the message doesn't send.
+                        if len(word) >=15:
+                            print(word)
+                            message=''
+                            return
+
                     for word in string:
                         #If a character such as ! is in message, checks and makes sure the correct button is caitalized 
                         for char in word:
@@ -101,20 +135,20 @@ def program():
                         keyboard.release('space')
 
                 return
-
-            if message.lower() == '!taco':
-                sendMessage(irc, "It's Taco Time!")
-                message = ''
+            except:
+                message=''
                 return
+
+            
             else:
                 message = ''
                 return
-
     def gamecontrol():
         global message
         global user
 
         while True:
+            
             #Minecraft
 
             #Mouse has a timer otherwise left click may not get registerd in some games
@@ -178,8 +212,7 @@ def program():
             else:
                 message == ''
                 return
-            continue
-    
+
     #Connects You to Twitch Servers and starts other groups (i.e Controller and Commands)
     #You Should Not Need to Change Anything in the Twitch Section
     def twitch():
@@ -250,6 +283,7 @@ def program():
                     
                     user = getUser(line)
                     message = getMessage(line)
+                    message=message.lower()
                     print(user + " : " + message)
                     gamecontrol()
                     commands()
