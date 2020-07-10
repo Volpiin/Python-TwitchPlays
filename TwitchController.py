@@ -48,31 +48,41 @@ def program():
         while True:
             
             #Types a Message Using Keyboard based on twitch input
-            # This is ugly code and in the process of getting improved.
-           ''' if 'type' in message.lower():
+                #Currently types everything but working on getting it to only type words after the word type!
+            if 'type' in message.lower():
                 new_msg = message.split('type')
                 new_msg = message.split(' ')
                 constructor = []
                 final = []
                 string = []
+                apas_builder = []
                 for scentence in new_msg:
+                    
                     constructor.append(scentence)
-                    #Limits The max Number of Words That Can be Typed
-                if len(constructor) >= 10:
-                    pass
+
+                if len(constructor) >= 20:
                     return
                 else:
                     for word in constructor:
                         final.append(word)
                     final_place = final.index('type')
                     for word in final[final_place+1:]:
+                        if "'" in word:
+                            for letter in word:
+                                if letter == "'":
+                                    continue
+                                else:
+                                    apas_builder.append(letter)
+                            word = ''.join(apas_builder)
+                            apas_builder = []
                         string.append(word)
                     for word in string:
                         for char in word:
                             keyboard.press(char)
                             keyboard.release(char)
                         keyboard.press('space')
-                return'''
+                        keyboard.release('space')
+                return
 
 
                     
