@@ -10,6 +10,9 @@ import pyautogui
 import keyboard
 import mouse
 
+global special_char
+#Special Chararcters List for Typing (not a full list, add others that you think you need!)
+special_char = ['!','@',"#","$","%","^","&","*","(",")","?"]
 
 message = ' '
 user = ' '
@@ -82,21 +85,20 @@ def program():
                         string.append(word)
                     for word in string:
                         for char in word:
-                            keyboard.press(char)
-                            keyboard.release(char)
+                            #Test if the letter is a special char and if so, presses shift along with Char key so it capitalizes it self. 
+                            if char in special_char:
+                                keyboard.press('shift')
+                                keyboard.press(char)
+                                keyboard.release(char)
+                                keyboard.release('shift')
+                            else:
+                                keyboard.press(char)
+                                keyboard.release(char)
                         keyboard.press('space')
                         keyboard.release('space')
+
                 return
 
-
-                    
-                '''if word == '':
-                        pass
-                    else:
-                        for letter in word.strip():
-                            keyboard.press(letter)
-                            keyboard.release(letter)
-                        keyboard.press('space')'''
 
 
             if message.lower() == '!taco':
@@ -263,4 +265,3 @@ def program():
     t2. start()
     t3 = threading.Thread(target = commands)
     t3.start()
-
