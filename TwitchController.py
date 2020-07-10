@@ -11,7 +11,6 @@ import keyboard
 import mouse
 
 global special_char
-#Special Chararcters List for Typing (not a full list, add others that you think you need!)
 special_char = ['!','@',"#","$","%","^","&","*","(",")","?"]
 
 message = ' '
@@ -85,7 +84,6 @@ def program():
                         string.append(word)
                     for word in string:
                         for char in word:
-                            #Test if the letter is a special char and if so, presses shift along with Char key so it capitalizes it self. 
                             if char in special_char:
                                 keyboard.press('shift')
                                 keyboard.press(char)
@@ -99,8 +97,6 @@ def program():
 
                 return
 
-
-
             if message.lower() == '!taco':
                 sendMessage(irc, "It's Taco Time!")
                 message = ''
@@ -112,7 +108,6 @@ def program():
     def gamecontrol():
         global message
         global user
-        i = 0
 
         while True:
             #Minecraft
