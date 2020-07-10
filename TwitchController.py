@@ -67,6 +67,10 @@ def program():
                         final.append(word)
                     final_place = final.index('type')
                     for word in final[final_place+1:]:
+                        #This is an apple character that can't be used on windows machines. 
+                        #If you want to get rid of another puncuation or find a punctuation that causes an error, add it here with a or statement
+                        # ex(if "’" in word or if "symbol" in word:)
+         
                         if "’" in word:
                             for letter in word:
                                 if letter == "’":
