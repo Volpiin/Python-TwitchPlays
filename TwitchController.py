@@ -116,6 +116,8 @@ def program():
 
         while True:
             #Minecraft
+
+            #Mouse has a timer otherwise left click may not get registerd in some games
             if message.lower() == 'left click':
                 mouse.press(button='left')
                 time.sleep(1)
