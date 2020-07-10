@@ -31,6 +31,7 @@ Changelogs: Check Here for Updates
   - Added comments to differnt aspects to add clarification.
   - Add limits to type command that can be changed. i.e) Max Number of Words Allowed and Max Number of Letters Allowed in a Word
     - This can be changed in the Commands typing section where they are marked with comments. 
+  - Fixed Error where if user used type command with capital letters it would not input properly.
 
 
 - If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
