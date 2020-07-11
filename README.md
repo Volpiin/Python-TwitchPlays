@@ -1,4 +1,4 @@
-# TwitchController-v1.2.5 aka Twitch Plays Bot
+# TwitchController-v1.2.6 aka Twitch Plays Bot
 Used to allow your computer to receive your twitch chat, to control your keyboard or to create your own twitch bot!
 
 
@@ -32,6 +32,10 @@ Changelogs: Check Here for Updates
   - Add limits to type command that can be changed. i.e) Max Number of Words Allowed and Max Number of Letters Allowed in a Word
     - This can be changed in the Commands typing section where they are marked with comments. 
   - Fixed Error where if user used type command with capital letters it would not input properly.
+  - Fixed Error where some capital letters would break in typing command.
+    - Current Solution turn message into lowercase from the start of program, this shouldnt have any negative effects on commands if they search for lowercase, otherwise you may need to change. 
+  - Added a Paragraph command that creates a new paragraph. It has a 50% chance of working but can be changed to be 100% if required.
+    - Ex) All you have to do is type "new paragraph"
 
 
 - If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
