@@ -50,10 +50,10 @@ def program():
         user_list = []
         while True:
             
-            if message.lower() == '!taco':
+            '''if message.lower() == '!taco':
                 sendMessage(irc, "It's Taco Time!")
                 message = ''
-                return
+                return'''
             
             #used if typying somthign like a story otherwise just delete it.    
             if message.lower() == 'new paragraph':
@@ -283,7 +283,7 @@ def program():
                     
                     user = getUser(line)
                     message = getMessage(line)
-                    message=message.lower()
+                    message = message.lower()
                     print(user + " : " + message)
                     gamecontrol()
                     commands()
