@@ -1,4 +1,5 @@
 import time
+#To change countdown durration lower the i value to desired number of seconds. 
 def stopwatch():
     i = 5
     while i >= 1:
