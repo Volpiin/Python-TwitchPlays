@@ -164,11 +164,16 @@ def program():
             #Minecraft
 
             #Mouse has a timer otherwise left click may not get registerd in some games
+
+            #left click is what people would type in chat to make this command happen
+            #MouseClick calls the function up above to make it happen. it required two inputs, the button (left or right) to be pressed, and the time to be pressed. 
             if message.lower() == 'left click':
                 MouseClick('left',2)
                 message = ''
                 return
-                
+            
+            #Twitch chat would need to type forward or w to make this command happen 
+            #PressAndHoldKey calls the function up above to make it happen, it required two inputs, the key to press and the time to be pressed.
             if message.lower() == 'forward' or message.lower() == 'w':
                 PressAndHoldKey('w',2)
                 message=''
