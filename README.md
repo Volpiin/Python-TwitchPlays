@@ -36,7 +36,8 @@ Changelogs: Check Here for Updates
     - Current Solution turn message into lowercase from the start of program, this shouldnt have any negative effects on commands if they search for lowercase, otherwise you may need to change. 
   - Added a Paragraph command that creates a new paragraph. It has a 50% chance of working but can be changed to be 100% if required.
     - Ex) All you have to do is type "new paragraph"
-
+- 7/12/2020
+  - Created keyboard and mouse functions to make reading better and make coding easier for non-coders. 
 
 - If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
 - If You Appreciate This Consider Following me on Twitch: https://www.twitch.tv/henryfundenberger
