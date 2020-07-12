@@ -1,11 +1,11 @@
-import socket
-import threading
-import userinfo
-import os
+import socket #Neccisary 
+import threading #Neccisary
+import userinfo #Comes with download
+import os #REMOVE FOR MAC // Not Currently Used in Project
 import time
 
 import random
-#Recogmended Libraries
+#Recogmended Libraries but all optional if you have other ways.
 import pynput
 import pyautogui
 import keyboard
