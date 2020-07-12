@@ -1,11 +1,10 @@
-import socket #Neccisary 
-import threading #Neccisary
-import userinfo #Comes with download
-import os #REMOVE FOR MAC // Not Currently Used in Project
+#Required Libraries
+import socket
+import threading
+import userinfo
 import time
-
+#Recogmended Libraries
 import random
-#Recogmended Libraries but all optional if you have other ways.
 import pynput
 import pyautogui
 import keyboard
@@ -47,18 +46,16 @@ def program():
     def commands():
         global message
         global user
-        user_list = []
         while True:
             
-            '''if message.lower() == '!taco':
+            if message.lower() == '!taco':
                 sendMessage(irc, "It's Taco Time!")
                 message = ''
-                return'''
+                return
             
             #used if typying somthign like a story otherwise just delete it.    
             if message.lower() == 'new paragraph':
                 attempt = random.randint(1,2)
-                print(attempt)
                 if attempt == 2:
                     keyboard.press('enter')
                     keyboard.release('enter')
@@ -86,12 +83,11 @@ def program():
                     string = []
                     #Checks for bad windows Characters
                     apas_builder = []
-                    for scentence in new_msg:
-                        
+                    for scentence in new_msg:           
                         constructor.append(scentence)
                     #Limits Max number of words allowed to be typed, It is num - 2.
                     # Ex.) If >=7 then 5 words can be typed.
-                    if len(constructor) >= 7:
+                    if len(constructor) >= 22:
                         message=''
                         return
                     else:
@@ -102,8 +98,6 @@ def program():
                             #This is an apple character that can't be used on windows machines. 
                             #If you want to get rid of another puncuation or find a punctuation that causes an error, add it here with a or statement
                             # ex(if "’" in word or if "symbol" in word:)
-                        
-
                             if "’" in word:
                                 for letter in word:
                                     if letter == "’":
@@ -119,7 +113,6 @@ def program():
                             print(word)
                             message=''
                             return
-
                     for word in string:
                         #If a character such as ! is in message, checks and makes sure the correct button is caitalized 
                         for char in word:
@@ -133,7 +126,6 @@ def program():
                                 keyboard.release(char)
                         keyboard.press('space')
                         keyboard.release('space')
-
                 return
             except:
                 message=''
@@ -147,65 +139,74 @@ def program():
         global message
         global user
 
+        def PressAndHoldKey(key, seconds):
+            keyboard.press(key)
+            time.sleep(seconds)
+            keyboard.release(key)
+
+        def PressAndHold2Key(key1,key2,seconds): #If You Need More Keys Just continue The pattern, create another def add key3
+            keyboard.press(key1)
+            keyboard.press(key2)
+            time.sleep(seconds)
+            keyboard.release(key1)
+            keyboard.release(key2)
+
+        def MouseClick(key,seconds):#key means left or right for this one
+            mouse.press(button = key)
+            time.sleep(seconds)
+            mouse.release(button = key)
+
+        def MouseTurn(x,y,seconds):
+            pyautogui.moveRel(x, y, duration = seconds) 
+
         while True:
             
             #Minecraft
 
             #Mouse has a timer otherwise left click may not get registerd in some games
             if message.lower() == 'left click':
-                mouse.press(button='left')
-                time.sleep(1)
-                mouse.release(button = 'left')
+                MouseClick('left',2)
                 message = ''
                 return
                 
             if message.lower() == 'forward' or message.lower() == 'w':
-                keyboard.press('w')
-                time.sleep(5)
-                message = ''
-                keyboard.release('w')
+                PressAndHoldKey('w',2)
+                message=''
                 return
+
             if message.lower() == 'back' or message.lower() == 's':
-                keyboard.press('s')
-                time.sleep(2)
+                PressAndHoldKey('s',2)
                 message = ''
-                keyboard.release('s')
                 return
+
             if message.lower() == 'left' or message.lower() == 'port' or message.lower() == 'a':
-                keyboard.press('a')
-                time.sleep(2)
+                PressAndHoldKey('a',2)
                 message = ''
-                keyboard.release('a')
                 return
+
             if message.lower() == 'right' or message.lower() == 'starboard' or message.lower() == 'd':
-                keyboard.press('d')
-                time.sleep(2)
+                PressAndHoldKey('d',2)
                 message = ''
-                keyboard.release('d')
                 return
+
             if message.lower() == 'jump':
-                keyboard.press('space')
-                time.sleep(1)
-                keyboard.release("space")
+                PressAndHoldKey('space',2)
                 message = ''
                 return
+
             if message.lower() == 'crouch':
-                keyboard.press('shift')
-                time.sleep(2)
-                keyboard.release('shift')
+                PressAndHoldKey('shift',2)
                 message = ''
                 return
-            if message.lower() == 'run' or message.lower() == 'sprint':
-                keyboard.press('w')
-                keyboard.press('control')
+
+            if message.lower() == 'run' or message.lower() == 'sprint': #This one stays because multiple keys are being pressed
+                PressAndHold2Key('w','control',2)
                 message = ''
-                time.sleep(3)
-                keyboard.release('w')
-                keyboard.release('control')
                 return
+
             #You may need to experiment with turning angels and time. This turns you about 90° to the right in MC
             if message.lower() == 'turn right':
-                pyautogui.moveRel(60, 0, duration = 1) 
+                MouseTurn(60,0,1)
                 message = ''
                 return
             
@@ -224,16 +225,12 @@ def program():
             Loading = True
             while Loading:
                 readbuffer_join = irc.recv(1024)
-                readbuffer_join = readbuffer_join.decode()
-                
-                for line in readbuffer_join.split("\n")[0:-1]:
-                    
+                readbuffer_join = readbuffer_join.decode()                
+                for line in readbuffer_join.split("\n")[0:-1]:                    
                     Loading = loadingComplete(line)
-
         def loadingComplete(line):
             if("End of /NAMES list" in line):
                 #sendMessage(irc, "Hello World!")
-
                 return False
             else:
                 return True
@@ -241,7 +238,6 @@ def program():
         def sendMessage(irc, message):
             messageTemp = "PRIVMSG #" + CHANNEL + " :" + message
             irc.send((messageTemp + "\n").encode())
-
         def getUser(line):
             global user
             colons = line.count(":")
@@ -249,7 +245,6 @@ def program():
             separate = line.split(":", colons)
             user = separate[colonless].split("!", 1)[0]
             return user
-
         def getMessage(line):
             global message
             try:
@@ -258,7 +253,6 @@ def program():
             except:
                 message = ""
             return message
-
         def console(line):
             if "PRIVMSG" in line:
                 return False
