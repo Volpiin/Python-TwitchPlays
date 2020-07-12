@@ -11,7 +11,8 @@ import keyboard
 import mouse
 
 global special_char
-special_char = ['!','@',"#","$","%","^","&","*","(",")","?","P"]
+special_char = ['!','@',"#","$","%","^","&","*","(",")","?",]
+capital_char = ['A',"B",'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
 message = ' '
 user = ' '
@@ -70,9 +71,9 @@ def program():
                     return
             #Types a Message Using Keyboard based on twitch input
                 #Currently types everything but working on getting it to only type words after the word type!
-            
             try:
                 if 'type' in message.lower():
+                    #message = message.lower()
                     new_msg = message.split('type')
                     new_msg = message.split(' ')
                     #Used to check number of words in message string
@@ -116,6 +117,13 @@ def program():
                     for word in string:
                         #If a character such as ! is in message, checks and makes sure the correct button is caitalized 
                         for char in word:
+                            if char in capital_char:
+                                char = char.lower()
+                                keyboard.press('shift')
+                                keyboard.press(char)
+                                keyboard.release(char)
+                                keyboard.release('shift')
+                                continue
                             if char in special_char:
                                 keyboard.press('shift')
                                 keyboard.press(char)
@@ -139,6 +147,7 @@ def program():
         global message
         global user
 
+            
         def PressAndHoldKey(key, seconds):
             keyboard.press(key)
             time.sleep(seconds)
@@ -153,21 +162,30 @@ def program():
 
         def MouseClick(key,seconds):#key means left or right for this one
             mouse.press(button = key)
+            #Mouse has a timer otherwise left click may not get registerd in some games it can be 0.1 seconds
             time.sleep(seconds)
             mouse.release(button = key)
 
         def MouseTurn(x,y,seconds):
             pyautogui.moveRel(x, y, duration = seconds) 
+        
+        #Chance That Twitch Command Will Run Needs two number x = smaller number y = larger number
+        def ActionChance(x,y):
+            chance = random.randint(x,y)
+            return chance
 
         while True:
-            
             #Minecraft
 
-            #Mouse has a timer otherwise left click may not get registerd in some games
+            
+        
 
             #left click is what people would type in chat to make this command happen
             #MouseClick calls the function up above to make it happen. it required two inputs, the button (left or right) to be pressed, and the time to be pressed. 
             if message.lower() == 'left click':
+                chance = ActionChance(1,2)
+                if chance == 2:
+                    break
                 MouseClick('left',2)
                 message = ''
                 return
@@ -175,11 +193,17 @@ def program():
             #Twitch chat would need to type forward or w to make this command happen 
             #PressAndHoldKey calls the function up above to make it happen, it required two inputs, the key to press and the time to be pressed.
             if message.lower() == 'forward' or message.lower() == 'w':
+                #50% chance Command will run. Runs on Odd Numbers 
+                if ActionChance(1,10) % 2 == 0:
+                    break
                 PressAndHoldKey('w',2)
                 message=''
                 return
 
             if message.lower() == 'back' or message.lower() == 's':
+                #10% Chance command will run
+                if ActionChance(1,10) != 5:
+                    break
                 PressAndHoldKey('s',2)
                 message = ''
                 return
@@ -222,7 +246,7 @@ def program():
     #Connects You to Twitch Servers and starts other groups (i.e Controller and Commands)
     #You Should Not Need to Change Anything in the Twitch Section
     def twitch():
-
+        
         global user
         global message
 
@@ -282,7 +306,6 @@ def program():
                     
                     user = getUser(line)
                     message = getMessage(line)
-                    message = message.lower()
                     print(user + " : " + message)
                     gamecontrol()
                     commands()
