@@ -3,6 +3,7 @@ import socket
 import threading
 import userinfo
 import time
+import twitchlogo
 #Recogmended Libraries
 import random
 import pynput
@@ -11,6 +12,7 @@ import keyboard
 import mouse
 
 global special_char
+global capital_char
 special_char = ['!','@',"#","$","%","^","&","*","(",")","?",]
 capital_char = ['A',"B",'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
@@ -18,6 +20,7 @@ message = ' '
 user = ' '
 
 def program():
+    twitchlogo.print_twitch_logo()
     SERVER = "irc.twitch.tv"
     PORT = 6667
 
@@ -48,7 +51,14 @@ def program():
         global message
         global user
         while True:
-            
+
+            def UniqueChar(char):
+                keyboard.press('shift')
+                keyboard.press(char)
+                keyboard.release(char)
+                keyboard.release('shift')
+
+
             if message.lower() == '!taco':
                 sendMessage(irc, "It's Taco Time!")
                 message = ''
@@ -88,7 +98,7 @@ def program():
                         constructor.append(scentence)
                     #Limits Max number of words allowed to be typed, It is num - 2.
                     # Ex.) If >=7 then 5 words can be typed.
-                    if len(constructor) >= 22:
+                    if len(constructor) >= 22000:
                         message=''
                         return
                     else:
@@ -110,30 +120,28 @@ def program():
                             string.append(word)
                     for word in constructor:
                         #Checks if word is longer than 15 characters if it is the message doesn't send.
-                        if len(word) >=15:
+                        if len(word) >=15000:
                             print(word)
                             message=''
                             return
+                    #For Minecraft Un-Comment
+                    #PressAndHoldKey('t',0.1)
                     for word in string:
                         #If a character such as ! is in message, checks and makes sure the correct button is caitalized 
                         for char in word:
                             if char in capital_char:
                                 char = char.lower()
-                                keyboard.press('shift')
-                                keyboard.press(char)
-                                keyboard.release(char)
-                                keyboard.release('shift')
+                                UniqueChar(char)
                                 continue
                             if char in special_char:
-                                keyboard.press('shift')
-                                keyboard.press(char)
-                                keyboard.release(char)
-                                keyboard.release('shift')
+                                UniqueChar(char)
                             else:
                                 keyboard.press(char)
                                 keyboard.release(char)
                         keyboard.press('space')
                         keyboard.release('space')
+                    #For Minecraft Un-Comment
+                    #PressAndHoldKey('enter',0.1)
                 return
             except:
                 message=''
@@ -147,7 +155,7 @@ def program():
         global message
         global user
 
-            
+        global PressAndHoldKey
         def PressAndHoldKey(key, seconds):
             keyboard.press(key)
             time.sleep(seconds)
@@ -159,6 +167,12 @@ def program():
             time.sleep(seconds)
             keyboard.release(key1)
             keyboard.release(key2)
+
+        def HoldKey(key):
+            keyboard.press(key)
+
+        def ReleaseKey(key):
+            keyboard.press(key)
 
         def MouseClick(key,seconds):#key means left or right for this one
             mouse.press(button = key)
@@ -196,7 +210,7 @@ def program():
                 #50% chance Command will run. Runs on Odd Numbers 
                 if ActionChance(1,10) % 2 == 0:
                     break
-                PressAndHoldKey('w',2)
+                PressAndHoldKey('w',5)
                 message=''
                 return
 
@@ -228,8 +242,12 @@ def program():
                 message = ''
                 return
 
-            if message.lower() == 'run' or message.lower() == 'sprint': #This one stays because multiple keys are being pressed
-                PressAndHold2Key('w','control',2)
+            if message.lower() == 'run' or message.lower() == 'sprint': 
+                if ActionChance(1,2) == 2:
+                    break
+                HoldKey('control')
+                PressAndHoldKey('w',2)
+                ReleaseKey('control')
                 message = ''
                 return
 
