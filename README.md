@@ -39,7 +39,8 @@ Changelogs: Check Here for Updates
 - 7/12/2020
   - Created keyboard and mouse functions to make reading better and make coding easier for non-coders. 
   - Fixed Capitilizations Errors with Type command
-
+-7/14/2020
+  - Added Twitch Controller Logo at Start of Console at Launch
 - If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
 - If You Appreciate This Consider Following me on Twitch: https://www.twitch.tv/henryfundenberger
 
