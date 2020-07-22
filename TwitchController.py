@@ -149,7 +149,6 @@ def program():
 
             
             else:
-                message = ''
                 return
     def gamecontrol():
         global message
@@ -258,7 +257,6 @@ def program():
                 return
             
             else:
-                message == ''
                 return
 
     #Connects You to Twitch Servers and starts other groups (i.e Controller and Commands)
@@ -327,6 +325,7 @@ def program():
                     print(user + " : " + message)
                     gamecontrol()
                     commands()
+                    message=''
                     
         
         joinchat()
