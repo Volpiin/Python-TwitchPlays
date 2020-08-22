@@ -151,7 +151,6 @@ def program():
             else:
                 return
     def gamecontrol():
-        x = 5
         global message
         global user
 
