@@ -44,3 +44,8 @@ Changelogs: Check Here for Updates
 - If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
 - If You Appreciate This Consider Following me on Twitch: https://www.twitch.tv/henryfundenberger
 
+
+- 8/28/2020
+  - Production is currently halted.
+  - This is open source feel free to download and edit it as much as you want!
+
