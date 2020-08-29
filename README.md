@@ -36,18 +36,22 @@ Changelogs: Check Here for Updates
     - Current Solution turn message into lowercase from the start of program, this shouldnt have any negative effects on commands if they search for lowercase, otherwise you may need to change. 
   - Added a Paragraph command that creates a new paragraph. It has a 50% chance of working but can be changed to be 100% if required.
     - Ex) All you have to do is type "new paragraph"
-    <br />
+<br />
+<br />
 - 7/12/2020
   - Created keyboard and mouse functions to make reading better and make coding easier for non-coders. 
   - Fixed Capitilizations Errors with Type command
-  <br />
+<br />
+<br />
 - 7/14/2020
   - Added Twitch Controller Logo at Start of Console at Launch
-  <br />
+<br />
+<br />
 - 8/28/2020
   - Production is currently halted.
   - This is open source feel free to download and edit it as much as you want!  
-  <br />
+<br />
+<br />
 - If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
 - If You Appreciate This Consider Following me on Twitch: https://www.twitch.tv/henryfundenberger
 
