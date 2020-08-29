@@ -5,4 +5,4 @@ import timer
 import TwitchController
 timer.stopwatch()
 TwitchController.program()
-print('asdf ')
+
