@@ -6,7 +6,7 @@ Make Sure You Add Your Info to userinfo.py
 
 Download Sockets.py library
 <br/>
-Download recommended libaries which can be found at the top of the TwitchController.py file!
+Download recommended & required libaries which can be found at the top of the TwitchController.py file!
 
 Everything else should work. 
 
@@ -54,6 +54,7 @@ Changelogs: Check Here for Updates
 <br />
 <br />
 - If You Want to Demonstrate this Code in a Video Please Give Me Proper Creds :) that would be nice of you!
+<br/>
 - If You Appreciate This Consider Following me on Twitch: https://www.twitch.tv/henryfundenberger
 
 
