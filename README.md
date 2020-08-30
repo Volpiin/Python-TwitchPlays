@@ -5,7 +5,8 @@ Used to allow your computer to receive your twitch chat, to control your keyboar
 Make Sure You Add Your Info to userinfo.py
 
 Download Sockets.py library
-Download recommended libaries 
+<br/>
+Download recommended libaries which can be found at the top of the TwitchController.py file!
 
 Everything else should work. 
 
