@@ -10,12 +10,7 @@ import pynput
 import pyautogui
 import keyboard
 import mouse
-
-global special_char
-global capital_char
-special_char = ['!','@',"#","$","%","^","&","*","(",")","?",]
-capital_char = ['A',"B",'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-
+import pydirectinput
 message = ' '
 user = ' '
 
@@ -52,104 +47,17 @@ def program():
         global user
         while True:
 
-            def UniqueChar(char):
-                keyboard.press('shift')
-                keyboard.press(char)
-                keyboard.release(char)
-                keyboard.release('shift')
-
 
             if message.lower() == '!taco':
                 sendMessage(irc, "It's Taco Time!")
                 message = ''
                 return
-            
-            #used if typying somthign like a story otherwise just delete it.    
-            if message.lower() == 'new paragraph':
-                attempt = random.randint(1,2)
-                if attempt == 2:
-                    keyboard.press('enter')
-                    keyboard.release('enter')
-                    keyboard.press('enter')
-                    keyboard.release('enter')
-                    keyboard.press('tab')
-                    keyboard.release('tab')
-                    message=''
-                    return
-                else:
-                    message=''
-                    return
-            #Types a Message Using Keyboard based on twitch input
-                #Currently types everything but working on getting it to only type words after the word type!
-            try:
-                if 'type' in message.lower():
-                    #message = message.lower()
-                    new_msg = message.split('type')
-                    new_msg = message.split(' ')
-                    #Used to check number of words in message string
-                    constructor = []
-                    #Used to create finalized constructor list
-                    final = []
-                    #used to create final string
-                    string = []
-                    #Checks for bad windows Characters
-                    apas_builder = []
-                    for scentence in new_msg:           
-                        constructor.append(scentence)
-                    #Limits Max number of words allowed to be typed, It is num - 2.
-                    # Ex.) If >=7 then 5 words can be typed.
-                    if len(constructor) >= 22000:
-                        message=''
-                        return
-                    else:
-                        for word in constructor:
-                            final.append(word)
-                        final_place = final.index('type')
-                        for word in final[final_place+1:]:
-                            #This is an apple character that can't be used on windows machines. 
-                            #If you want to get rid of another puncuation or find a punctuation that causes an error, add it here with a or statement
-                            # ex(if "’" in word or if "symbol" in word:)
-                            if "’" in word:
-                                for letter in word:
-                                    if letter == "’":
-                                        continue
-                                    else:
-                                        apas_builder.append(letter)
-                                word = ''.join(apas_builder)
-                                apas_builder = []
-                            string.append(word)
-                    for word in constructor:
-                        #Checks if word is longer than 15 characters if it is the message doesn't send.
-                        if len(word) >=15000:
-                            print(word)
-                            message=''
-                            return
-                    #For Minecraft Un-Comment
-                    #PressAndHoldKey('t',0.1)
-                    for word in string:
-                        #If a character such as ! is in message, checks and makes sure the correct button is caitalized 
-                        for char in word:
-                            if char in capital_char:
-                                char = char.lower()
-                                UniqueChar(char)
-                                continue
-                            if char in special_char:
-                                UniqueChar(char)
-                            else:
-                                keyboard.press(char)
-                                keyboard.release(char)
-                        keyboard.press('space')
-                        keyboard.release('space')
-                    #For Minecraft Un-Comment
-                    #PressAndHoldKey('enter',0.1)
-                return
-            except:
-                message=''
+
+            else:
+                message = ''
                 return
 
-            
-            else:
-                return
+# This is Where you make Game Control Commands 
     def gamecontrol():
         global message
         global user
@@ -173,6 +81,24 @@ def program():
         def ReleaseKey(key):
             keyboard.press(key)
 
+        global PressAndHoldKey
+        def PressAndHoldKey(key, seconds):
+            keyboard.press(key)
+            time.sleep(seconds)
+            keyboard.release(key)
+
+        def PressAndHold2Key(key1,key2,seconds): #If You Need More Keys Just continue The pattern, create another def add key3
+            keyboard.press(key1)
+            keyboard.press(key2)
+            time.sleep(seconds)
+            keyboard.release(key1)
+            keyboard.release(key2)
+
+        def HoldKey(key):
+            keyboard.press(key)
+
+        def ReleaseKey(key):
+            keyboard.press(key)
         def MouseClick(key,seconds):#key means left or right for this one
             mouse.press(button = key)
             #Mouse has a timer otherwise left click may not get registerd in some games it can be 0.1 seconds
@@ -180,18 +106,19 @@ def program():
             mouse.release(button = key)
 
         def MouseTurn(x,y,seconds):
-            pyautogui.moveRel(x, y, duration = seconds) 
+            pyautogui.moveRel(x,y,seconds)
+            return
+            
         
         #Chance That Twitch Command Will Run Needs two number x = smaller number y = larger number
         def ActionChance(x,y):
             chance = random.randint(x,y)
             return chance
 
-        while True:
-            #Minecraft
 
-            
-        
+
+        while True:
+
 
             #left click is what people would type in chat to make this command happen
             #MouseClick calls the function up above to make it happen. it required two inputs, the button (left or right) to be pressed, and the time to be pressed. 
@@ -215,7 +142,7 @@ def program():
 
             if message.lower() == 'back' or message.lower() == 's':
                 #10% Chance command will run
-                if ActionChance(1,10) != 5:
+                if ActionChance(4,5) != 5:
                     break
                 PressAndHoldKey('s',2)
                 message = ''
@@ -257,7 +184,10 @@ def program():
                 return
             
             else:
+                message == ''
                 return
+            message=''  
+            return
 
     #Connects You to Twitch Servers and starts other groups (i.e Controller and Commands)
     #You Should Not Need to Change Anything in the Twitch Section
@@ -323,19 +253,12 @@ def program():
                     user = getUser(line)
                     message = getMessage(line)
                     print(user + " : " + message)
-                    gamecontrol()
-                    commands()
-                    message=''
-                    
-        
+                    running = (gamecontrol(), commands())
+                                        
         joinchat()
         
         
         
-                    
-                    
-
-
     t1 = threading.Thread(target = twitch)
     t1.start()
     t2 = threading.Thread(target = gamecontrol)
