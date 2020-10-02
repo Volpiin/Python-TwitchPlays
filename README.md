@@ -2,6 +2,13 @@
 
 ***NEWEST VERSION*** 
 The newest update made on 10/2/2020 makes the program run much more effiecntly doing multiple and all commands at once instead of doing one then waiting. 
+<br/>
+***TUTORIAL LINKS***
+<br/>
+How to Use The Bot: https://youtu.be/y1zJDo4Hp5Y?t=1
+<br/>
+How to install pip: https://youtu.be/JT6enP35ORo
+<br/>
 
 Used to allow your computer to receive your twitch chat, to control your keyboard or to create your own twitch bot!
 
