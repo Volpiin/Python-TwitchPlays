@@ -1,6 +1,6 @@
 # TwitchController-v1.3 aka Twitch Plays Bot
 
-***NEWEST VERSION*** 
+***NEWEST VERSION*** <br/>
 The newest update made on 10/2/2020 makes the program run much more effiecntly doing multiple and all commands at once instead of doing one then waiting. 
 <br/>
 ***TUTORIAL LINKS***
