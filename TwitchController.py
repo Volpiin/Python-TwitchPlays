@@ -72,11 +72,11 @@ def program():
             keyboard.press(key)
 
         def ReleaseKey(key):
-            keyboard.press(key)
+            keyboard.release(key)
 
         def MouseClick(key,seconds):#key means left or right for this one
             mouse.press(button = key)
-            #Mouse has a timer otherwise left click may not get registerd in some games it can be 0.1 seconds
+            #Mouse has a timer otherwise left click may not get registered. In some games it can be 0.1 seconds
             time.sleep(seconds)
             mouse.release(button = key)
 
@@ -93,7 +93,7 @@ def program():
 
 
         while True:
-            #Minecraf
+            #Minecraft
 
 
 
@@ -145,7 +145,7 @@ def program():
                 
                 return
 #********************************************************************
-            #You may need to experiment with turning angels and time. This turns you about 90° to the right in MC
+            #You may need to experiment with turning angles and time. This turns you about 90° to the right in MC
             if message.lower() == 'turn right':
                 MouseTurn(60,0,1)
                 
