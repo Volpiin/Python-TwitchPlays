@@ -1,10 +1,10 @@
-#Required Libraries
+#Wymagane Libraries w Pythonie. Zgarniesz je używajac pip install. Część z nich jest preinstalled lecz na pewno Socket jest do zgarniecia osobno.
 import socket
 import threading
 import userinfo
 import time
 import twitchlogo
-#Recogmended Libraries
+#Rekomendowane Libraries. Bierz je wszystkie jak chcesz ciagnąć inputy z chatu.
 import random
 import pynput
 import pyautogui
@@ -49,19 +49,18 @@ def program():
 
 
     
-    #Example of Twitch Bot Commands Setup
+    #Przykładowe komendy, wzoruj sie na nich jak chcesz coś zaimplementować.
     
     def gamecontrol():
         global message
         global user
-
-
+       
         def PressAndHoldKey(key, seconds):
             keyboard.press(key)
             time.sleep(seconds)
             keyboard.release(key)
 
-        def PressAndHold2Key(key1,key2,seconds): #If You Need More Keys Just continue The pattern, create another def add key3
+        def PressAndHold2Key(key1,key2,seconds): #Jak potrzebujesz więcej przycisków - trzymaj sie patternu widocznego tutaj - def add key3 etc.
             keyboard.press(key1)
             keyboard.press(key2)
             time.sleep(seconds)
@@ -74,9 +73,9 @@ def program():
         def ReleaseKey(key):
             keyboard.release(key)
 
-        def MouseClick(key,seconds):#key means left or right for this one
+        def MouseClick(key,seconds): #key = left bądź right w tym przypadku
             mouse.press(button = key)
-            #Mouse has a timer otherwise left click may not get registered. In some games it can be 0.1 seconds
+            #Przyciski myszy MUSZĄ mieć timer inaczej nie zostaną zarejestrowane. Zazwyczaj 0.1 sekundy w niektórych grach, kwestia tweakowania i testów.
             time.sleep(seconds)
             mouse.release(button = key)
 
@@ -85,11 +84,10 @@ def program():
             return
             
         
-        #Chance That Twitch Command Will Run Needs two number x = smaller number y = larger number
+        #TODO: przetestuj to gówno - Chance That Twitch Command Will Run Needs two number x = smaller number y = larger number
         def ActionChance(x,y):
             chance = random.randint(x,y)
             return chance
-
 
 
         while True:
@@ -113,52 +111,8 @@ def program():
                 PressAndHoldKey('w',5)
                 return
 
-            if message.lower() == 'back' or message.lower() == 's':
-                #10% Chance command will run
-                if ActionChance(4,5) != 5:
-                    break
-                PressAndHoldKey('s',2)
-                return
-
-            if message.lower() == 'left' or message.lower() == 'port' or message.lower() == 'a':
-                PressAndHoldKey('a',10)
-                return
-
-            if message.lower() == 'right' or message.lower() == 'starboard' or message.lower() == 'd':
-                PressAndHoldKey('d',2)
-                return
-
-            if message.lower() == 'jump':
-                PressAndHoldKey('space',2)
-                return
-
-            if message.lower() == 'crouch':
-                PressAndHoldKey('shift',2)
-                return
-
-            if message.lower() == 'run' or message.lower() == 'sprint': 
-                if ActionChance(1,2) == 2:
-                    break
-                HoldKey('control')
-                PressAndHoldKey('w',2)
-                ReleaseKey('control')
-                
-                return
-#********************************************************************
-            #You may need to experiment with turning angles and time. This turns you about 90° to the right in MC
-            if message.lower() == 'turn right':
-                MouseTurn(60,0,1)
-                
-                return
-            
-            else:
-                message == ''
-                return
-            message=''  
-            return
-
-    #Connects You to Twitch Servers and starts other groups (i.e Controller and Commands)
-    #You Should Not Need to Change Anything in the Twitch Section
+    #kod łaczący z Twitchem i startujacym reszte kodu.
+    #Nie ruszamy tutaj nic w sekcji kodu Twitchowego, not worth i nic to nie da
     def twitch():
         
         global user

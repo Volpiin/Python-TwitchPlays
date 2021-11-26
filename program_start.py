@@ -1,6 +1,6 @@
-#Run This File to Start After Everything is Setup!
-#Make Sure You add Your Info Into userinfo.py!
-#Make Sure You Add Sockets Library 
+#Odpalasz w CMD ten plik by wystartować po zsetupowaniu wszystkiego
+#PAMIETAJ BY DODAĆ SWOJE DANE DO userinfo.py
+#PAMIETAJ BY ZAINSTALOWAĆ WYMAGANE I REKOMENDOWANE BIBLIOTEKI!!
 import timer
 import TwitchController
 timer.stopwatch()
