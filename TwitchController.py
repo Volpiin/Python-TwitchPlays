@@ -88,29 +88,75 @@ def program():
         def ActionChance(x,y):
             chance = random.randint(x,y)
             return chance
-
-
+        
         while True:
-            #Minecraft
+            #Przykład pod Minecrafta
 
 
 
-            #left click is what people would type in chat to make this command happen
-            #MouseClick calls the function up above to make it happen. it required two inputs, the button (left or right) to be pressed, and the time to be pressed. 
+            #"left click" na chacie sprawi że ta komenda sie aktywuje
+            #MouseClick odwołuje sie do funkcji wpisanej wyżej by to zadziałało.
+            #Wymagane dwa inputy 0 przycisk oraz czas do naciśniecia
             if message.lower() == 'left click':
 
                 MouseClick('left',2)
                 return
             
-            #Twitch chat would need to type forward or w to make this command happen 
-            #PressAndHoldKey calls the function up above to make it happen, it required two inputs, the key to press and the time to be pressed.
+            #Czat musi wpisac "forward" bądź "w" by ta komenda zadziałała
+            #PressAndHoldKey odwołuje sie do funkcji wpisanej wyżej by to zadziałało.
+            #Wymagane dwa inputy - przycisk oraz czas do naciśniecia
             if message.lower() == 'forward' or message.lower() == 'w':
-                #50% chance Command will run. Runs on Odd Numbers 
+                #50% szansy że komenda sie odpali. Działa na liczbach nieparzystych.
                 if ActionChance(1,10) % 2 == 0:
                     break
                 PressAndHoldKey('w',5)
                 return
 
+            if message.lower() == 'back' or message.lower() == 's':
+                #10% szansy że komenda sie odpali
+                if ActionChance(4,5) != 5:
+                    break
+                PressAndHoldKey('s',2)
+                return
+
+            if message.lower() == 'left' or message.lower() == 'port' or message.lower() == 'a':
+                PressAndHoldKey('a',10)
+                return
+
+            if message.lower() == 'right' or message.lower() == 'starboard' or message.lower() == 'd':
+                PressAndHoldKey('d',2)
+                return
+
+            if message.lower() == 'jump':
+                PressAndHoldKey('space',2)
+                return
+
+            if message.lower() == 'crouch':
+                PressAndHoldKey('shift',2)
+                return
+
+            if message.lower() == 'run' or message.lower() == 'sprint': 
+                if ActionChance(1,2) == 2:
+                    break
+                HoldKey('control')
+                PressAndHoldKey('w',2)
+                ReleaseKey('control')
+                
+                return
+#********************************************************************
+            #Wpływ na obrót kamery ma sens myszki w grze. To powinno na domyślnym MC obrócić kamere o 90 stopni. Wymaga eksperymentowania z kątem i czasem.
+            if message.lower() == 'turn right':
+                MouseTurn(60,0,1)
+                
+                return
+            
+            else:
+                message == ''
+                return
+            message=''  
+            return
+
+        
     #kod łaczący z Twitchem i startujacym reszte kodu.
     #Nie ruszamy tutaj nic w sekcji kodu Twitchowego, not worth i nic to nie da
     def twitch():
