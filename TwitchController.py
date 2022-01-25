@@ -97,64 +97,118 @@ def program():
             #"left click" na chacie sprawi że ta komenda sie aktywuje
             #MouseClick odwołuje sie do funkcji wpisanej wyżej by to zadziałało.
             #Wymagane dwa inputy 0 przycisk oraz czas do naciśniecia
-            if message.lower() == 'left click':
+            #if message.lower() == 'left click':
 
-                MouseClick('left',2)
-                return
+            #      MouseClick('left',2)
+            #     return
             
             #Czat musi wpisac "forward" bądź "w" by ta komenda zadziałała
             #PressAndHoldKey odwołuje sie do funkcji wpisanej wyżej by to zadziałało.
             #Wymagane dwa inputy - przycisk oraz czas do naciśniecia
-            if message.lower() == 'forward' or message.lower() == 'w':
+            #if message.lower() == 'forward' or message.lower() == 'w':
                 #50% szansy że komenda sie odpali. Działa na liczbach nieparzystych.
-                if ActionChance(1,10) % 2 == 0:
-                    break
-                PressAndHoldKey('w',5)
+                #if ActionChance(1,10) % 2 == 0:
+                    #break
+                #PressAndHoldKey('w',5)
+                #return
+
+            if message.lower() == 'down':
+                PressAndHoldKey('down',2)
                 return
 
-            if message.lower() == 'back' or message.lower() == 's':
-                #10% szansy że komenda sie odpali
-                if ActionChance(4,5) != 5:
-                    break
-                PressAndHoldKey('s',2)
+            if message.lower() == 'left':
+                PressAndHoldKey('left',2)
                 return
 
-            if message.lower() == 'left' or message.lower() == 'port' or message.lower() == 'a':
-                PressAndHoldKey('a',10)
+            if message.lower() == 'right':
+                PressAndHoldKey('right',2)
                 return
 
-            if message.lower() == 'right' or message.lower() == 'starboard' or message.lower() == 'd':
-                PressAndHoldKey('d',2)
+            if message.lower() == 'up':
+                PressAndHoldKey('up',2)
                 return
 
-            if message.lower() == 'jump':
-                PressAndHoldKey('space',2)
-                return
-
-            if message.lower() == 'crouch':
-                PressAndHoldKey('shift',2)
-                return
-
-            if message.lower() == 'run' or message.lower() == 'sprint': 
-                if ActionChance(1,2) == 2:
-                    break
-                HoldKey('control')
-                PressAndHoldKey('w',2)
-                ReleaseKey('control')
-                
-                return
-#********************************************************************
-            #Wpływ na obrót kamery ma sens myszki w grze. To powinno na domyślnym MC obrócić kamere o 90 stopni. Wymaga eksperymentowania z kątem i czasem.
-            if message.lower() == 'turn right':
-                MouseTurn(60,0,1)
-                
+            if message.lower() == 'a':
+                PressAndHoldKey('a',2)
                 return
             
-            else:
-                message == ''
+            if message.lower() == 'b':
+                PressAndHoldKey('b',2)
                 return
-            message=''  
-            return
+
+            if message.lower() == 'x':
+                PressAndHoldKey('x',2)
+                return
+
+            if message.lower() == 'y':
+                PressAndHoldKey('y',2)
+                return
+
+            if message.lower() == 'z':
+                PressAndHoldKey('z',2)
+                return
+
+            if message.lower() == 'dpad_up':
+                PressAndHoldKey('t',2)
+                return
+
+            if message.lower() == 'dpad_down':
+                PressAndHoldKey('g',2)
+                return
+
+            if message.lower() == 'dpad_left':
+                PressAndHoldKey('f',2)
+                return
+
+            if message.lower() == 'dpad_right':
+                PressAndHoldKey('h',2)
+                return
+
+            if message.lower() == 'stick_up':
+                PressAndHoldKey('i',2)
+                return
+
+            if message.lower() == 'stick_down':
+                PressAndHoldKey('k',2)
+                return
+
+            if message.lower() == 'stick_left':
+                PressAndHoldKey('j',2)
+                return
+
+            if message.lower() == 'stick_right':
+                PressAndHoldKey('l',2)
+                return
+            
+            if message.lower() == 'trigger_l':
+                PressAndHoldKey('q',2)
+                return
+
+            if message.lower() == 'trigger_r':
+                PressAndHoldKey('w',2)
+                return
+
+
+            #if message.lower() == 'run' or message.lower() == 'sprint': 
+                #if ActionChance(1,2) == 2:
+                    #break
+                #HoldKey('control')
+                #PressAndHoldKey('w',2)
+                #ReleaseKey('control')
+                
+                #return
+#********************************************************************
+            #Wpływ na obrót kamery ma sens myszki w grze. To powinno na domyślnym MC obrócić kamere o 90 stopni. Wymaga eksperymentowania z kątem i czasem.
+            #if message.lower() == 'turn right':
+                #MouseTurn(60,0,1)
+                
+                #return
+            
+            #else:
+                #message == ''
+                #return
+            #message=''  
+            #return
 
         
     #kod łaczący z Twitchem i startujacym reszte kodu.
