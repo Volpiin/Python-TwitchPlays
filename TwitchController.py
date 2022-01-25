@@ -218,3 +218,5 @@ def program():
         joinchat()
     t1 = threading.Thread(target = twitch)
     t1.start()
+
+#you cheeky bastard, widze ze gapisz mi sie na bebech koda
