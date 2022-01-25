@@ -5,6 +5,4 @@ def print_twitch_logo():
     print("   | \ \ /\ / / | __/ __| '_ \  | |    / _ \| '_ \| __| '__/ _ \| | |/ _ \ '__|")
     print("   | |\ V  V /| | || (__| | | | | |___| (_) | | | | |_| | | (_) | | |  __/ |   ")
     print("   |_| \_/\_/ |_|\__\___|_| |_|  \_____\___/|_| |_|\__|_|  \___/|_|_|\___|_|   ")
-    print("Modified by Volpiin for WOŚP 2022")
-    
-    
+    print("Modified by Volpiin for WOŚP 2022, original by ItsHenryF")

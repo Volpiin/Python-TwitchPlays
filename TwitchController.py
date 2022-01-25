@@ -6,11 +6,9 @@ import time
 import twitchlogo
 #Rekomendowane Libraries. Bierz je wszystkie jak chcesz ciagnąć inputy z chatu.
 import random
-import pynput
 import pyautogui
 import keyboard
 import mouse
-import pydirectinput
 
 global special_char
 global capital_char
@@ -26,31 +24,16 @@ def program():
     twitchlogo.print_twitch_logo()
     SERVER = "irc.twitch.tv"
     PORT = 6667
-
-
     PASS = userinfo.PASS
-
-
     BOT = userinfo.BOT
-
-
     CHANNEL = userinfo.CHANNEL
-
-
     OWNER = userinfo.OWNER
-
-
     irc = socket.socket()
-
     irc.connect((SERVER, PORT))
     irc.send((	"PASS " + PASS + "\n" +
                 "NICK " + BOT + "\n" +
                 "JOIN #" + CHANNEL + "\n").encode())
-
-
-    
     #Przykładowe komendy, wzoruj sie na nich jak chcesz coś zaimplementować.
-    
     def gamecontrol():
         global message
         global user
@@ -90,27 +73,6 @@ def program():
             return chance
         
         while True:
-            #Przykład pod Minecrafta
-
-
-
-            #"left click" na chacie sprawi że ta komenda sie aktywuje
-            #MouseClick odwołuje sie do funkcji wpisanej wyżej by to zadziałało.
-            #Wymagane dwa inputy 0 przycisk oraz czas do naciśniecia
-            #if message.lower() == 'left click':
-
-            #      MouseClick('left',2)
-            #     return
-            
-            #Czat musi wpisac "forward" bądź "w" by ta komenda zadziałała
-            #PressAndHoldKey odwołuje sie do funkcji wpisanej wyżej by to zadziałało.
-            #Wymagane dwa inputy - przycisk oraz czas do naciśniecia
-            #if message.lower() == 'forward' or message.lower() == 'w':
-                #50% szansy że komenda sie odpali. Działa na liczbach nieparzystych.
-                #if ActionChance(1,10) % 2 == 0:
-                    #break
-                #PressAndHoldKey('w',5)
-                #return
 
             if message.lower() == 'down':
                 PressAndHoldKey('down',2)
@@ -186,31 +148,7 @@ def program():
 
             if message.lower() == 'trigger_r':
                 PressAndHoldKey('w',2)
-                return
-
-
-            #if message.lower() == 'run' or message.lower() == 'sprint': 
-                #if ActionChance(1,2) == 2:
-                    #break
-                #HoldKey('control')
-                #PressAndHoldKey('w',2)
-                #ReleaseKey('control')
-                
-                #return
-#********************************************************************
-            #Wpływ na obrót kamery ma sens myszki w grze. To powinno na domyślnym MC obrócić kamere o 90 stopni. Wymaga eksperymentowania z kątem i czasem.
-            #if message.lower() == 'turn right':
-                #MouseTurn(60,0,1)
-                
-                #return
-            
-            #else:
-                #message == ''
-                #return
-            #message=''  
-            #return
-
-        
+                return      
     #kod łaczący z Twitchem i startujacym reszte kodu.
     #Nie ruszamy tutaj nic w sekcji kodu Twitchowego, not worth i nic to nie da
     def twitch():

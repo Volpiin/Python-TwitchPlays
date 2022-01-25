@@ -1,7 +1,7 @@
 import time
-#To change countdown durration lower the i value to desired number of seconds. 
+#By zmienić długość timera zmieńta se i = X na ładną liczbe.
 def stopwatch():
-    i = 5 #Change This Value 
+    i = 5 #Value do zmiany 
     while i >= 1:
         print(i)
         i-=1
